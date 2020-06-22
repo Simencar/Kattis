@@ -1,7 +1,7 @@
-import java.awt.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+
 
 public class AirConditionedMinions {
     public static void main(String[] args) {
