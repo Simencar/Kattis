@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 public class TenKindsOfPeople {
     private static int startR;
@@ -33,20 +33,21 @@ public class TenKindsOfPeople {
             startC = io.getInt() - 1;
             endR = io.getInt() - 1;
             endC = io.getInt() - 1;
+
             done = false;
             output = "neither";
             int curVal = map[startR][startC];
-
             boolean[][] visited = new boolean[rows][columns];
+
             if (curVal != map[endR][endC]) {
                 done = true;
             }
-            if (curVal == 0 && ready0) {
+            if (curVal == 0 && ready0) { //path for zeros exist
                 if (visited0[startR][startC] && visited0[endR][endC]) {
                     done = true;
                     output = "binary";
                 }
-                if (visited0[startR][startC] && visited0[oldEndR0][oldEndC0]) {
+                if (visited0[startR][startC] && visited0[oldEndR0][oldEndC0]) { //continue from last dfs end pos
                     while (!done) {
                         dfs(map, oldEndR0, oldEndC0, visited0);
                         break;
@@ -54,7 +55,7 @@ public class TenKindsOfPeople {
                     }
                 }
             }
-            if (curVal == 1 && ready1) {
+            if (curVal == 1 && ready1) { //path for ones exist
                 if (visited1[startR][startC] && visited1[endR][endC]) {
                     done = true;
                     output = "decimal";
@@ -67,15 +68,13 @@ public class TenKindsOfPeople {
                 }
 
             }
-
-            while (!done) {
-                dfs(map, startR, startC, visited);
+            while (!done) {  //no path exist, create one
+                dfs(map, startR, startC, visited); // in loop to stop recursion when path is found
                 done = true;
             }
-
-            System.out.println(output);
+            io.println(output);
         }
-
+        io.close();
 
     }
 
@@ -88,7 +87,6 @@ public class TenKindsOfPeople {
         }
         if (row == endR && col == endC) {
             visited[row][col] = true;
-
             if (map[row][col] == 1) {
                 output = "decimal";
                 visited1 = visited;
