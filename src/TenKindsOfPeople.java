@@ -88,16 +88,19 @@ public class TenKindsOfPeople {
         }
         if (row == endR && col == endC) {
             visited[row][col] = true;
-            oldEndR1 = row;
-            oldEndC1 = col;
+
             if (map[row][col] == 1) {
                 output = "decimal";
                 visited1 = visited;
                 ready1 = true;
+                oldEndR1 = row;
+                oldEndC1 = col;
             } else {
                 output = "binary";
                 visited0 = visited;
                 ready0 = true;
+                oldEndC0 = col;
+                oldEndR0 = row;
             }
             done = true;
         }
