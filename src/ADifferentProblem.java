@@ -9,19 +9,15 @@ public class ADifferentProblem {
             ans = removeLeadingZeros(ans);
             io.println(ans);
             io.flush();
-
         }
         io.close();
-
-
-
 
     }
 
     /**
      *
-     * @param s1 String representing an Int
-     * @param s2 String representing an Int
+     * @param s1 String representing a number
+     * @param s2 String representing a number
      * @return True if s1 is a larger number than s2
      */
     public static boolean isLarger(String s1, String s2) {
@@ -43,6 +39,12 @@ public class ADifferentProblem {
         return false;
     }
 
+
+    /**
+     *
+     * @param s String to be reversed
+     * @return The reversed String
+     */
     public static String reverse(String s) {
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < s.length(); i++) {
@@ -51,6 +53,12 @@ public class ADifferentProblem {
         return sb.toString();
     }
 
+    /**
+     *
+     * @param s1 String representing a number
+     * @param s2 String representing a number
+     * @return the difference between s1 and s2 as a String
+     */
     public static String diff(String s1, String s2) {
         String x; // larger number
         String y; // smaller number
@@ -92,6 +100,11 @@ public class ADifferentProblem {
         return ans.toString();
     }
 
+    /**
+     *
+     * @param s A String representing a number
+     * @return A String without leading zeros
+     */
     public static String removeLeadingZeros(String s) {
         int zeroInd = 0;
         for(int i = 0; i < s.length(); i++) {
@@ -103,7 +116,7 @@ public class ADifferentProblem {
             }
         }
         if(zeroInd == s.length()) {
-            zeroInd--; // leave one zero
+            zeroInd--; // leave one zero if every pos is zero
         }
         return s.substring(zeroInd);
     }
