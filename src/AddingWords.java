@@ -7,6 +7,10 @@ public class AddingWords {
         while (io.hasMoreTokens()) {
             String cmd = io.getWord();
 
+            if (cmd.equals("clear")) {
+                vals.clear();
+            }
+
             if (cmd.equals("def")) {
                 String vName = io.getWord();
                 int val = io.getInt();
@@ -15,12 +19,12 @@ public class AddingWords {
 
             if (cmd.equals("calc")) {
                 String symb;
-                StringBuilder intRep = new StringBuilder();
                 StringBuilder stringRep = new StringBuilder();
                 boolean unknown = false;
                 boolean plus = true;
                 boolean minus = false;
                 int sum = 0;
+                
                 while (!(symb = io.getWord()).equals("=")) {
                     if (symb.equals("-")) {
                         stringRep.append(symb + " ");
@@ -33,7 +37,6 @@ public class AddingWords {
                     } else {
                         stringRep.append(symb + " ");
                         if (vals.containsKey(symb)) {
-                            intRep.append(vals.get(symb));
                             if (plus) {
                                 sum += vals.get(symb);
                             }
@@ -64,9 +67,7 @@ public class AddingWords {
                 io.flush();
             }
 
-            if (cmd.equals("clear")) {
-                vals.clear();
-            }
+
         }
         io.close();
 
