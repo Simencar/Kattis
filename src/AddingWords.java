@@ -43,8 +43,7 @@ public class AddingWords {
                             if (minus) {
                                 sum -= vals.get(symb);
                             }
-                        }
-                        else {
+                        } else {
                             unknown = true;
                         }
                     }
@@ -58,8 +57,7 @@ public class AddingWords {
                             break;
                         }
                     }
-                }
-                else {
+                } else {
                     stringRep.append("= unknown");
                 }
 
