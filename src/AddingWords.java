@@ -24,18 +24,18 @@ public class AddingWords {
                 boolean plus = true;
                 boolean minus = false;
                 int sum = 0;
-                
+
                 while (!(symb = io.getWord()).equals("=")) {
                     if (symb.equals("-")) {
-                        stringRep.append(symb + " ");
+                        stringRep.append(symb).append(" ");
                         minus = true;
                         plus = false;
                     } else if (symb.equals("+")) {
-                        stringRep.append(symb + " ");
+                        stringRep.append(symb).append(" ");
                         minus = false;
                         plus = true;
                     } else {
-                        stringRep.append(symb + " ");
+                        stringRep.append(symb).append(" ");
                         if (vals.containsKey(symb)) {
                             if (plus) {
                                 sum += vals.get(symb);
@@ -53,7 +53,7 @@ public class AddingWords {
                 if (vals.containsValue(sum) && !unknown) {
                     for (String key : vals.keySet()) {
                         if (vals.get(key) == sum) {
-                            stringRep.append("= " + key);
+                            stringRep.append("= ").append(key);
                             break;
                         }
                     }
