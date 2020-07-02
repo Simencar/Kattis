@@ -18,7 +18,7 @@ public class ClosestSums {
                 io.println("Closest sum to " + num + " is " + closest + ".");
                 io.flush();
             }
-            
+
         }
         io.close();
     }
