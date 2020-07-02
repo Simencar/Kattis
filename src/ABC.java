@@ -10,7 +10,7 @@ public class ABC {
             min = Math.min(min, num);
             max = Math.max(max, num);
         }
-        
+
         String s = io.getWord();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
@@ -21,9 +21,9 @@ public class ABC {
                 sb.append(max).append(" ");
             } else {
                 int mid = 0;
-                for (int j = 0; j < nums.length; j++) {
-                    if (nums[j] != min && nums[j] != max) {
-                        mid = nums[j];
+                for (int num : nums) {
+                    if (num != min && num != max) {
+                        mid = num;
                         break;
                     }
                 }
