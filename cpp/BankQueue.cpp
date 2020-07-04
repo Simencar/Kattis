@@ -16,5 +16,6 @@ int main()
         cin >> m >> t;
         money[i] = m;
         time[i] = t;
+        //hei
     }
 }
