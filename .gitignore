@@ -2,3 +2,5 @@
 /.idea
 *.exe
 !*/cpp/*.exe
+Kattis.iml
+/out
