@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
+int main()
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
@@ -35,17 +36,20 @@ int main() {
 
     string line;
     string result;
-    getline(cin,line);
-    for(int i = 0; i < line.length(); i++) {
+    getline(cin, line);
+    for (int i = 0; i < line.length(); i++)
+    {
         char c = tolower(line.at(i));
-        string sc(1,c);
-        if(map.find(c) == map.end()) {
+        string sc(1, c);
+        if (map.find(c) == map.end())
+        {
             result.append(sc);
         }
-        else {
+        else
+        {
             result.append(map.at(c));
         }
     }
-    cout<<result<<endl;
+    cout << result << endl;
     return 0;
 }
