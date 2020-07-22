@@ -18,7 +18,6 @@ int main() {
 
     int n;
     while ((cin >> n) && n != 0) {
-        string out = "CCW ";
         vector<pair<double, double>> cords(n);
         int sum = 0;
         for (int i = 0; i < n; i++) {
@@ -26,15 +25,11 @@ int main() {
             cin >> c.first >> c.second;
             cords[i] = c;
         }
-        double area = getArea(cords, n+1);
-        if(area < 0) {
-            out = "CW ";
-        }
-        
-        
+        double area = getArea(cords, n + 1);
+
         cout << fixed;
         cout << setprecision(1);
-        cout << out << abs(area) << "\n";
+        cout << (area < 0 ? "CW " : "CCW ") << abs(area) << "\n";
     }
 
     return 0;
