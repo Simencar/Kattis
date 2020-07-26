@@ -15,17 +15,29 @@ int main() {
     string out;
     int count = 1;
     int start = numbers[0];
+    bool endMatch = false;
     for (int i = 1; i < n; i++) {
-        if(numbers[i] == numbers[i-1]+1) {
+        if (numbers[i] == numbers[i - 1] + 1) {
             count++;
-        }
-        else {
-            if(count > 2) {
-                out += to_string(start) + "-" + to_string(numbers[i-1]);
+            if (i == n - 1) {
+                numbers[i - 1] = numbers[i];
+                endMatch = true;
+                goto print;
             }
-            else {
-                
+        } else {
+        print:
+            if (count > 2) {
+                out += to_string(start) + "-" + to_string(numbers[i - 1]) + " ";
+            } else if (count == 2) {
+                out += to_string(start) + " " + to_string(numbers[i - 1]) + " ";
+            } else {
+                out += to_string(start) + " ";
             }
+            if (i == n - 1 && !endMatch) {
+                out += to_string(numbers[i]);
+            }
+            count = 1;
+            start = numbers[i];
         }
     }
     cout << out << endl;
