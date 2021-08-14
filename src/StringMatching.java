@@ -1,67 +1,65 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class StringMatching {
-    public static void main(String[] args) throws IOException {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args) {
+        Kattio io = new Kattio(System.in, System.out);
+        String text;
         String pattern;
-        while((pattern = reader.readLine()) != null) {
-            String text = reader.readLine();
-            kmpSearch(text, pattern);
-            System.out.println();
+        while((pattern = io.getLine()) != null && (text = io.getLine()) != null) {
+            int[] lps = computeLPSArray(pattern);
+            kmp(pattern, text, lps, io);
+            io.println();
         }
-
-        reader.close();
+        io.close();
     }
-    public static void kmpSearch(String txt, String pat) {
-        int M = pat.length();
-        int N = txt.length();
-        int lps[] = new int[M];
-        int j = 0;
-        int i = 0;
-        computeLPSArray(pat, M, lps);
-        while (i < N) {
-            if (pat.charAt(j) == txt.charAt(i)) {
-                j++;
-                i++;
-            }
-            if (j == M) {
-                System.out.print(i-j + " ");
-                j = lps[j - 1];
-            }
 
 
-            else if (i < N && pat.charAt(j) != txt.charAt(i)) {
-                if (j != 0) {
-                    j = lps[j - 1];
-                }
-                else {
-                    i = i + 1;
-                }
-            }
-        }
-    }
-    public static void computeLPSArray(String pat, int M, int lps[]) {
-        int len = 0;
-        int i = 1;
-        lps[0] = 0;
-        while (i < M) {
-            if (pat.charAt(i) == pat.charAt(len)) {
-                len++;
-                lps[i] = len;
-                i++;
+    public static int[] computeLPSArray(String pat) {
+        int n = 0;
+        int k = pat.length();
+        int idx = 1;
+        int[] lps = new int[k];
+        while (idx < k) {
+            if (pat.charAt(idx) == pat.charAt(n)) {
+                n++;
+                lps[idx] = n;
+                idx++;
             }
             else {
-                if (len != 0) {
-                    len = lps[len - 1];
+                if (n != 0) {
+                    n = lps[n - 1];
                 }
                 else {
-                    lps[i] = len;
-                    i++;
+                    lps[idx] = n;
+                    idx++;
+                }
+            }
+        }
+        return lps;
+    }
+
+    public static void kmp(String pattern, String text, int[] lps, Kattio io) {
+        int n = text.length();
+        int k = pattern.length();
+        int idxT = 0;
+        int idxP = 0;
+        while(idxT < n) {
+            if(pattern.charAt(idxP) == text.charAt(idxT)) {
+                idxP++;
+                idxT++;
+            }
+            if(idxP == k) {
+                io.print(idxT - k + " ");
+                idxP = lps[idxP-1];
+            }
+            else if (idxT < n && pattern.charAt(idxP) != text.charAt(idxT)) {
+                if(idxP != 0) {
+                    idxP = lps[idxP-1];
+                }
+                else {
+                    idxT++;
                 }
             }
         }
     }
 }
+
