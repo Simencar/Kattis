@@ -15,7 +15,7 @@ public class KnigsOfTheForest {
             pq.add(m);
         }
         String out = "unknown";
-        while(pq.size() > 1) {
+        for (int j = 0; j < n; j++) {
             Moose winner = pq.poll();
             if (winner.str == karl.str) {
                 out = Integer.toString(winner.year);
@@ -25,6 +25,7 @@ public class KnigsOfTheForest {
                 Moose oldM = pq.poll();
                 Moose newM = new Moose(oldM.year+1, oldM.str);
                 pq.add(newM);
+                
             }
         }
         io.println(out);
