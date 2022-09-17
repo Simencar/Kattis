@@ -1,3 +1,2 @@
-# Kattis
-## A repository for Kattis solutions 
-### Kattio class is used for input/output on most problems solved in java and is needed when running. 
+# Kattis solutions
+Repository for solutions to [Kattis](https://open.kattis.com/) problems, in Java and C++.
